@@ -2,6 +2,7 @@ import { Reducer } from 'redux';
 import {UserState, UserTypes} from './types';
 
 const INITIAL_STATE: UserState = {
+  user:'',
   data: {
     login: '',
     id: 0,
@@ -22,9 +23,17 @@ const INITIAL_STATE: UserState = {
 
 const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
   switch(action.type){
+    case UserTypes.REQUEST_USER:
+      console.log(action.payload.user)
+      return {
+        ...state,
+        loading: false, 
+        error: false,
+        user: action.payload.user,
+      };
     case UserTypes.LOAD_REQUEST:
       return{
-        ...state, 
+        ...state,
         loading: true 
       };
     case UserTypes.LOAD_SUCCESS:

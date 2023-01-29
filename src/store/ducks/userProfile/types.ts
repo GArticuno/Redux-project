@@ -1,8 +1,9 @@
 
 export enum UserTypes {
+  REQUEST_USER = '@USER/REQUEST_USER',
   LOAD_REQUEST ='@user/LOAD_REQUEST',
   LOAD_SUCCESS ='@user/LOAD_SUCCESS',
-  LOAD_FAILURE ='@user/LOAD_FAILURE'
+  LOAD_FAILURE ='@user/LOAD_FAILURE',
 }
 
 export interface Repository {
@@ -27,6 +28,7 @@ export interface User {
 }
 
 export interface UserState {
+  readonly user: string;
   readonly data: User;
   readonly repositories: Repository[];
   readonly loading: boolean;
